@@ -1,0 +1,71 @@
+@font-face {
+    font-family: EconSans;
+    font-weight: 300;
+    src: url(ecosans-lig.woff2) format('woff2'), url(ecosans-lig.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSans;
+    font-style: normal;
+    src: url(ecosans-reg.woff2) format('woff2'), url(ecosans-reg.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSans;
+    font-weight: 700;
+    src: url(ecosans-bol.woff2) format('woff2'), url(ecosans-bol.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSans;
+    font-weight: 600;
+    src: url(econsansmed-webfont.woff2) format('woff2'), url(econsansmed-webfont.woff) format('woff');
+}
+
+@font-face {
+    font-family: EconSans;
+    font-style: italic;
+    src: url(ecosans-ita.woff2) format('woff2'), url(ecosans-ita.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSansCond;
+    font-weight: 300;
+    src: url(econsanscndlig-webfont.woff2) format('woff2'), url(econsanscndlig-webfont.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSansCond;
+    font-style: normal;
+    src: url(econsanscndreg-webfont.woff2) format('woff2'), url(econsanscndreg-webfont.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSansCond;
+    font-weight: 600;
+    src: url(econsanscndmed-webfont.woff2) format('woff2'), url(econsanscndmed-webfont.woff) format('woff')
+}
+
+@font-face {
+    font-family: EconSansCond;
+    font-style: italic;
+    src: url(econsanscndita-webfont.woff2) format('woff2'), url(econsanscndita-webfont.woff) format('woff')
+}
+
+@font-face {
+    font-family: MiloSerifPro;
+    font-style: normal;
+    src: url(ecoserif-reg.woff2) format('woff2'), url(ecoserif-reg.woff) format('woff')
+}
+
+@font-face {
+    font-family: MiloSerifPro;
+    font-style: italic;
+    src: url(ecoserif-ita.woff2) format('woff2'), url(ecoserif-ita.woff) format('woff')
+}
+
+@font-face {
+    font-family: MiloSerifPro;
+    font-weight: 500;
+    src: url(ecoserif-med.woff2) format('woff2'), url(ecoserif-med.woff) format('woff')
+}

@@ -1,0 +1,13 @@
+<!doctype html><!--[if IE 8]><html class="ie8"> <![endif]--><!--[if gt IE 8]><!--><html><!--<![endif]--><head><meta charset="utf-8">
+<!-- taken from https://infographics.economist.com/2018/DemocracyIndex/ -->
+<meta http-equiv="Access-Control-Allow-Origin" content="*"/><title>Local Democracy 2018</title>
+<script src="js/jquery.min.js"></script><script src="js/modernizr.js"></script>
+<link type="text/css" rel="stylesheet" media="all" href="css/szLocDemFonts.css"><link rel="stylesheet" href="css/szLocDem.css">
+<script src="data/szLocalData.js"></script><script src="js/d3.min.js"></script><script src="js/topojson.v1.min.js"></script><script src="js/d3.geo.projection.v0.min.js"></script>
+<script src="js/szlocInitFuns.js"></script><script src="js/szlocInit.js"></script></head>
+
+<body>   
+  <div style="position:absolute;margin-left: 200px;margin-top:425px;">
+  <select id="szSelFromList" onChange="szFindSelectedItem()" style="font-family: 'EconSans';font-size: 17px;background-color: #fff;"><!-- <option value="">Find country --></select></div>
+  <div data-mnv="mnv-ec-DemocracyMap" id="szMap" class="mnv-ec-DemocracyMap" style="width:580px;margin-left: -8px;margin-top: 0px;"></div>
+</body></html>

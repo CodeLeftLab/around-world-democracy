@@ -1,0 +1,15 @@
+.szMap {font: 14px "EconSans", Calibri, Arial;} .DemocracyMap {font: 14px "EconSans", Calibri, Arial;}
+.header {font-family: "EconSans", Calibri, Arial;    font-size: 18px;    font-weight: bold;}
+.subhead {font-family: "EconSansCond-Reg", Calibri, Arial;    font-size: 16px;    font-weight: normal;}
+.overlay {fill: none; pointer-events: all;} .path {stroke-linejoin: round;}  
+.interactive-header {position: relative;    padding-top: 18px;}
+.interactive-header:after  {content: ''; display: block; background-color: var(--econ-red); position: absolute;  top: 0;  left: 0; width: 27px; height: 10px;}
+.interactive-header:before {content: ''; display: block; background-color: var(--econ-red); position: absolute;  top: 0;  left: 0; width: 100%;  height: 1px;}
+.axis path,.axis line {fill: none; stroke: #fff; shape-rendering: crispEdges;}
+.x.axis path {         fill: none; stroke: #000; shape-rendering: crispEdges;}
+.szMapTab {font-family: "EconSansCond"; font-size: 16px; font-weight: bold;}
+.blockVals {pointer-events: none;}
+.szYrBtns {font-weight: bold; font-family: "EconSansCond"; font-size: 16px;}
+.szNations {cursor: pointer;}  .allBlocks {cursor: pointer;}
+.szLegendTxt {font-family: "EconSansCond"; fill: #758D9A; font-size: 12px;}
+.szFootNote {fill: #758D9A;}
