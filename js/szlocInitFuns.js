@@ -4,31 +4,24 @@ function MakeHeader(szHues) {var fullCanvas=d3.select("#"+szMapIDname).append("g
   var redline=headerSection.append("line").attr("x1", 1).attr("y1", 1).attr("x2", szTotalWidth).attr("y2", 1).style("stroke", szTagHue).style("stroke-width", "1px").attr("shape-rendering", "crispEdges");
   var header= headerSection.append("text").text(szHeading).attr("x", szHeadingX) .attr("y", szHeadingY) .attr("class", szHeadingClass);
   var header= headerSection.append("text").text(szSubHead).attr("x", szSubHeadX) .attr("y", szSubHeadY)  .attr("class", szSubHeadClass);
-  headerSection.selectAll(".keyMajorButs") .data(arrKey).enter().append("g").attr("class", szCssTabBtns).attr("transform", function(d, i) {return "translate(" + arrKMBX[i] + "," + szBoxYOffset + ")"})
+  headerSection.selectAll(".keyMajorButs") .data(szKeyNames).enter().append("g").attr("class", szCssTabBtns).attr("transform", function(d, i) {return "translate(" + arrKMBX[i] + "," + szBoxYOffset + ")"})
     .attr("id", function(d, i) {return szCssTabBtns+"_" + i; }).append("rect")  .attr("height", szMapTabsBoxHt) .attr("width", function(d, i) { if (i == 0) { return szFirstMapTabWid};  return szRestMapTabWid;  })
     .attr("stroke-width", 1) .attr("rx", 2) .attr("ry", 2) .attr("class", "yearRect") .attr("fill", function(d, i) {return "#fff" }).attr("stroke", strHighlightColour).attr("height", szBoxHeight);
-  d3.selectAll("."+szCssTabBtns) .append("text").attr("text-anchor", "middle").text(function(d, i) {return arrKey[i]; return arrKey[i].split(" ")[0]  })
-    .attr("x", function(d, i) {if (i == 0) {return (150 / 2) }; return (130 / 2); })   .attr("y", 20)
-    d3.selectAll("."+szCssTabBtns) .attr("cursor", "pointer") .on("click", function(d, i) {if (i == intSelBut) {intSelBut = -1} else {intSelBut = i;}; szToggleMapTabKey();})
-    headerSection .selectAll(".keyButs") .data(szHues).enter().append("rect").attr("width", 36) .attr("height", 10)
-        .attr("x", function(d, i) {if (i == 0) {intStart = (arrKMBX[0] + 5);          butCounter = -1;            }
-            if (i == 3) {                intStart = (arrKMBX[1] + 24);                butCounter = -1;            }
-            if (i == 5) {                intStart = (arrKMBX[2] + 24);                butCounter = -1;            }
-            if (i == 7) {                intStart = (arrKMBX[3] + 24);                butCounter = -1;            }
-            var intGap = 1;  // if(i==3||i==5||i==7){var intGap = 6}; if(i==8){var intGap = 10}; if(i==6){var intGap = 6}
-            butCounter++;  return (intStart + (50 * butCounter + intGap))    })
+  d3.selectAll("."+szCssTabBtns) .append("text").attr("text-anchor", "middle").text(function(d, i) {return szKeyNames[i]; return szKeyNames[i].split(" ")[0]  })
+    .attr("x", function(d, i) {if (i == 0) {return (150 / 2) }; return (130 / 2); })   .attr("y", 20);var ffTarg,ffPos,intGap;
+    d3.selectAll("."+szCssTabBtns) .attr("cursor", "pointer") .on("click", function(d, i) {if (i == szFlagBtnSelected) {szFlagBtnSelected = -1} else {szFlagBtnSelected=i;}; szToggleMapTabKey();})
+    headerSection.selectAll(".keyButs") .data(szHues).enter().append("rect").attr("width", 36) .attr("height", 10)
+        .attr("x", function(d, i) {ffTarg=[0,3,5,7];ffPos=ffTarg.indexOf(i);if (ffPos >-1) {intStart = (arrKMBXoff[ffPos]); butCounter = -1;}
+           intGap = 1; butCounter++;  return (intStart + (50 * butCounter + intGap))    })
         .attr("y", (szBoxYOffset + szBoxHeight + 8))  .attr("fill", function(d) {return d });
-    headerSection.selectAll(".keyNums").data(szKeyNumHues) .enter() .append("text") .text(function(d, i) {if (i == 3 || i == 6 | i == 9) {return d; return "<" + d;};
-      if (i == 4 || i == 7 | i == 10) {return d;return ">" + d;};  return d;  if (i > 0) {return i + 1 }; return i })    // .attr("font-family","Officina")
-        .attr("text-anchor", "middle")
-        .attr("x", function(d, i) {if (i == 0) {intStart = (arrKMBX[0] + 5); butCounter = -1;}; if (i == 4) {intStart = (arrKMBX[1] + 24); butCounter = -1;}
-            if (i == 7) {intStart = (arrKMBX[2] + 24);butCounter = -1;};  if (i == 10) {intStart = (arrKMBX[3] + 24);butCounter = -1; }  // if(i==7){intStart = (arrKMBX[2] + 24); butCounter = -1;}
-            var intGap = -1; // if(i==3||i==5||i==7){var intGap = 6}; if(i==8){var intGap = 10}; if(i==6){var intGap = 6}
-            butCounter++;  intXPos = (intStart + (48 * butCounter + intGap - 2)); if (i == 3 || i == 6 || i == 9 || i == 12) {intXPos = intXPos - 7};  return intXPos;  })
+    headerSection.selectAll(".keyNums").data(szKeyNameHues) .enter() .append("text") .text(function(d, i) {szDBG("i="+i);ffTarg=[3,6,9]; ffPos=ffTarg.indexOf(i);if (ffPos >-1) {return d; return "<" + d;};
+      ffTarg=[4,7,10]; ffPos=ffTarg.indexOf(i);if (ffPos >-1) {return d;return ">" + d;};  return d;  if (i > 0) {return i + 1 }; return i }) .attr("text-anchor", "middle")  // .attr("font-family","Officina")
+        .attr("x", function(d, i) {ffTarg=[0,4,7,10]; ffPos=ffTarg.indexOf(i);if (ffPos >-1) {intStart = (arrKMBXoff[ffPos]); butCounter = -1;};
+           intGap = -1; butCounter++; intXPos = (intStart + (48 * butCounter + intGap - 2)); ffTarg=[3,6,9,12]; ffPos=ffTarg.indexOf(i);if (ffPos >-1) {intXPos = intXPos - 7}; return intXPos; })
         .attr("y", (szBoxYOffset + szBoxHeight + 34))
 }
 function s2MapCreate(ffFooterText,f3Hues) {d3.jsonp = function(a, b) {
-  function c() {for (var a = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz", b = "", c = -1; ++c < 15;) b += a.charAt(Math.floor(52 * Math.random())); return b}
+  function c() {for (var a = szAlphabet, b = "", c = -1; ++c < 15;) b += a.charAt(Math.floor(52 * Math.random())); return b}
   function d(a) {var d = a.match(/callback=d3.jsonp.(\w+)/), e = d ? d[1] : c(); return d3.jsonp[e] = function(a) {b(a), delete d3.jsonp[e], f.remove() }, "d3.jsonp." + e }
   var e = d(a), f = d3.select("head").append("script").attr("type", "text/javascript").attr("src", a.replace(/(\{|%7B)callback(\}|%7D)/, e))};
   var xNum=1e7 * Math.random(); var szWorldMap; var szTargFile=szCountryData+"?callback=d3.jsonp.paint&x=";
